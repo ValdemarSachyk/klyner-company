@@ -14,8 +14,6 @@ const mainServices = [
       'Odkurzanie i mycie podłóg',
       'Czyszczenie kuchni i łazienki',
       'Mycie powierzchni i mebli',
-      'Wynoszenie śmieci',
-      'Zmiana pościeli na życzenie',
     ],
     color: '#E8F2FD',
     iconColor: '#1A7BE8',
@@ -29,8 +27,6 @@ const mainServices = [
       'Specjalistyczne sprzątanie pomiędzy pobytami gości. Zapewniamy hotelowy standard czystości i profesjonalne przygotowanie apartamentu na następnych turystów.',
     features: [
       'Szybki obrót – gotowość w 2–4 godz.',
-      'Wymiana i prasowanie pościeli',
-      'Uzupełnianie środków czystości',
       'Raport zdjęciowy ze sprzątania',
       'Priorytetowy kontakt 7 dni w tygodniu',
     ],
@@ -46,8 +42,6 @@ const mainServices = [
       'Utrzymanie porządku w miejscu pracy to inwestycja w komfort i produktywność zespołu. Oferujemy elastyczne harmonogramy dostosowane do rytmu Twojej firmy.',
     features: [
       'Czyszczenie stanowisk pracy i sal',
-      'Toalety i strefy socjalne',
-      'Mycie okien wewnętrznych',
       'Sprzątanie po godzinach pracy',
       'Umowy miesięczne z rabatem',
     ],
