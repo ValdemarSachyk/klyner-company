@@ -25,7 +25,7 @@ export default function Hero() {
         style={{ background: 'var(--color-accent-light)' }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 py-10 md:py-12 w-full">
+      <div className="relative max-w-6xl mx-auto px-6 pt-5 pb-10 md:py-12 w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left – text */}
           <div>
