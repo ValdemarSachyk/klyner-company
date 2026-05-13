@@ -25,8 +25,29 @@ export default function ContactCTA() {
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setErrors({});
     setState('sending');
-    await new Promise((r) => setTimeout(r, 1200));
-    setState('success');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: '0fe49ee0-dc28-41d3-a7e8-cb10a1169c0a',
+          name: form.name,
+          phone: form.phone,
+          service: form.service,
+          message: form.message,
+          subject: `Nowe zapytanie od ${form.name}`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setState('success');
+      } else {
+        throw new Error(data.message);
+      }
+    } catch {
+      setState('idle');
+      setErrors({ name: 'Wystąpił błąd. Spróbuj ponownie lub zadzwoń do nas.' });
+    }
   };
 
   return (
@@ -77,10 +98,10 @@ export default function ContactCTA() {
                     Telefon
                   </div>
                   <a
-                    href="tel:+48000000000"
+                    href="tel:+48734947424"
                     className="text-white font-semibold hover:underline"
                   >
-                    +48 000 000 000
+                    +48 734 947 424
                   </a>
                 </div>
               </div>
@@ -181,7 +202,7 @@ export default function ContactCTA() {
                       autoComplete="tel"
                       value={form.phone}
                       onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                      placeholder="+48 000 000 000"
+                      placeholder="+48 734 947 424"
                       className="w-full px-4 py-3 rounded-lg text-sm border outline-none transition-all duration-200"
                       style={{
                         borderColor: errors.phone ? '#E53E3E' : 'var(--color-border)',

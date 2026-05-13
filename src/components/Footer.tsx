@@ -55,8 +55,8 @@ export default function Footer() {
               <li>Szklarska Poręba</li>
               <li>Karpacz</li>
               <li className="mt-2">
-                <a href="tel:+48000000000" className="hover:text-white transition-colors duration-200">
-                  +48 000 000 000
+                <a href="tel:+48734947424" className="hover:text-white transition-colors duration-200">
+                  +48 734 947 424
                 </a>
               </li>
               <li>
@@ -73,7 +73,17 @@ export default function Footer() {
           style={{ borderColor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)' }}
         >
           <p>© {year} KLYNER. Wszelkie prawa zastrzeżone.</p>
-          <p>Jelenia Góra, Polska</p>
+          <p>
+            Design &amp; Development:{' '}
+            <a
+              href="https://www.vxldemar.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors duration-200"
+            >
+              VXLDEMAR
+            </a>
+          </p>
         </div>
       </div>
     </footer>

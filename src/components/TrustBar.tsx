@@ -40,13 +40,13 @@ export default function TrustBar() {
                 className="flex items-center gap-3"
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                  className="w-12 h-12 md:w-10 md:h-10 rounded-xl flex items-center justify-center shrink-0"
                   style={{ background: 'var(--color-primary-light)' }}
                 >
-                  <Icon className="w-5 h-5" style={{ color: 'var(--color-primary)' }} aria-hidden />
+                  <Icon className="w-6 h-6 md:w-5 md:h-5" style={{ color: 'var(--color-primary)' }} aria-hidden />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold" style={{ color: 'var(--color-ink)' }}>
+                  <div className="text-xl md:text-base font-semibold" style={{ color: 'var(--color-ink)' }}>
                     {badge.label}
                   </div>
                   <div className="text-xs" style={{ color: 'var(--color-ink-muted)' }}>

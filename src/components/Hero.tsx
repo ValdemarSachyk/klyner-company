@@ -25,7 +25,7 @@ export default function Hero() {
         style={{ background: 'var(--color-accent-light)' }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 py-24 w-full">
+      <div className="relative max-w-6xl mx-auto px-6 py-12 w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left – text */}
           <div>
@@ -95,7 +95,7 @@ export default function Hero() {
             >
               <a
                 href="#kontakt"
-                className="flex items-center justify-center gap-2 px-7 py-4 rounded-[10px] text-base font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95"
+                className="flex items-center justify-center gap-2 px-7 h-14 rounded-[10px] text-base font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95"
                 style={{
                   background: 'var(--color-primary)',
                   boxShadow: 'var(--shadow-btn)',
@@ -106,7 +106,7 @@ export default function Hero() {
               </a>
               <a
                 href="#uslugi"
-                className="flex items-center justify-center gap-2 px-7 py-4 rounded-[10px] text-base font-semibold border-2 transition-all duration-200 hover:scale-105 active:scale-95"
+                className="flex items-center justify-center gap-2 px-7 h-14 rounded-[10px] text-base font-semibold border-2 transition-all duration-200 hover:scale-105 active:scale-95"
                 style={{
                   color: 'var(--color-primary)',
                   borderColor: 'var(--color-primary)',
