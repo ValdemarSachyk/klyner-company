@@ -7,6 +7,7 @@ const additionalServices = [
   {
     icon: Droplets,
     title: 'Mycie okien',
+    price: 'od 30 zł',
     description:
       'Profesjonalne mycie okien wewnętrznych i zewnętrznych. Krystalicznie czyste szyby bez smug, dzięki specjalistycznym środkom i technikom.',
     color: '#E8F2FD',
@@ -15,6 +16,7 @@ const additionalServices = [
   {
     icon: Sofa,
     title: 'Pranie kanapy',
+    price: 'od 180 zł',
     description:
       'Suche czyszczenie tapicerki meblowej – kanapę, fotele, krzesła. Usuwamy plamy, kurz i alergeny, przywracając meblom świeży wygląd.',
     color: '#F3E8FD',
@@ -23,6 +25,7 @@ const additionalServices = [
   {
     icon: Layers,
     title: 'Pranie dywanów i chodników',
+    price: 'od 50 zł',
     description:
       'Głębokie czyszczenie dywanów wszelkich rozmiarów i materiałów. Skutecznie usuwamy brud, zapachy i roztocza, przedłużając żywotność dywanu.',
     color: '#FFF3E0',
@@ -75,9 +78,17 @@ export default function AdditionalServices() {
                 >
                   <Icon className="w-6 h-6" style={{ color: service.iconColor }} aria-hidden />
                 </div>
-                <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--color-ink)' }}>
-                  {service.title}
-                </h3>
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <h3 className="text-lg font-bold" style={{ color: 'var(--color-ink)' }}>
+                    {service.title}
+                  </h3>
+                  <span
+                    className="shrink-0 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap"
+                    style={{ background: service.color, color: service.iconColor }}
+                  >
+                    {service.price}
+                  </span>
+                </div>
                 <p className="text-sm leading-relaxed" style={{ color: 'var(--color-ink-secondary)' }}>
                   {service.description}
                 </p>

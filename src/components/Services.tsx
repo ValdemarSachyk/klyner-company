@@ -7,6 +7,7 @@ const mainServices = [
   {
     icon: Home,
     title: 'Sprzątanie mieszkań i domów',
+    price: 'od 250 zł',
     description:
       'Kompleksowe sprzątanie Twojego domu lub mieszkania – od kuchni po łazienkę. Dbamy o każdy detal, aby Twoja przestrzeń lśniła czystością.',
     features: [
@@ -23,6 +24,7 @@ const mainServices = [
   {
     icon: BedDouble,
     title: 'Sprzątanie Airbnb',
+    price: 'od 180 zł',
     description:
       'Specjalistyczne sprzątanie pomiędzy pobytami gości. Zapewniamy hotelowy standard czystości i profesjonalne przygotowanie apartamentu na następnych turystów.',
     features: [
@@ -39,6 +41,7 @@ const mainServices = [
   {
     icon: Building2,
     title: 'Sprzątanie biur i przestrzeni roboczych',
+    price: 'od 200 zł',
     description:
       'Utrzymanie porządku w miejscu pracy to inwestycja w komfort i produktywność zespołu. Oferujemy elastyczne harmonogramy dostosowane do rytmu Twojej firmy.',
     features: [
@@ -144,12 +147,20 @@ export default function Services() {
                   <Icon className="w-7 h-7" style={{ color: service.iconColor }} aria-hidden />
                 </div>
 
-                <h3
-                  className="text-xl font-bold mb-3"
-                  style={{ color: 'var(--color-ink)' }}
-                >
-                  {service.title}
-                </h3>
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h3
+                    className="text-xl font-bold"
+                    style={{ color: 'var(--color-ink)' }}
+                  >
+                    {service.title}
+                  </h3>
+                  <span
+                    className="shrink-0 text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap"
+                    style={{ background: service.color, color: service.iconColor }}
+                  >
+                    {service.price}
+                  </span>
+                </div>
                 <p
                   className="text-sm leading-relaxed mb-6"
                   style={{ color: 'var(--color-ink-secondary)' }}
