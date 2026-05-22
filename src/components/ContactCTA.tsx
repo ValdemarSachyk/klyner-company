@@ -6,6 +6,18 @@ import { Send, Phone, Mail, CheckCircle } from 'lucide-react';
 
 type FormState = 'idle' | 'sending' | 'success';
 
+// Ensure dataLayer is always defined globally
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
+function pushEvent(payload: Record<string, unknown>) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+}
+
 export default function ContactCTA() {
   const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' });
   const [state, setState] = useState<FormState>('idle');
@@ -40,6 +52,7 @@ export default function ContactCTA() {
       });
       const data = await res.json();
       if (data.success) {
+        pushEvent({ event: 'form_submit', form_name: 'contact_form' });
         setState('success');
       } else {
         throw new Error(data.message);
@@ -100,6 +113,7 @@ export default function ContactCTA() {
                   <a
                     href="tel:+48734947424"
                     className="text-white font-semibold hover:underline"
+                    onClick={() => pushEvent({ event: 'contact_phone' })}
                   >
                     +48 734 947 424
                   </a>
@@ -123,6 +137,7 @@ export default function ContactCTA() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white font-semibold hover:underline"
+                    onClick={() => pushEvent({ event: 'contact_whatsapp' })}
                   >
                     +48 734 947 424
                   </a>
