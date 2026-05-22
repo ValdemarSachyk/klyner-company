@@ -72,8 +72,8 @@ export default function ContactCTA() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
           >
@@ -152,19 +152,19 @@ export default function ContactCTA() {
 
           {/* Right – form */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-2xl p-8"
+            className="rounded-2xl p-8 overflow-hidden"
             style={{ background: 'white', boxShadow: '0 16px 48px rgba(0,0,0,0.15)' }}
           >
             {state === 'success' ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                className="flex flex-col items-center text-center py-8"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                className="flex flex-col items-center text-center py-8 w-full"
               >
                 <div
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
