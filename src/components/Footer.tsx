@@ -20,10 +20,36 @@ export default function Footer() {
                 height={32}
               />
             </div>
-            <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <p className="text-sm leading-relaxed max-w-xs mb-5" style={{ color: 'rgba(255,255,255,0.55)' }}>
               Profesjonalne sprzątanie w Jeleniej Górze, Szklarskiej Porębie i Karpaczu.
               Czystość, której możesz zaufać.
             </p>
+
+            {/* Google Maps button */}
+            <a
+              href="https://share.google/9U54jafAe6FWFhYdT"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-200 hover:bg-white/20"
+              style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.85)' }}
+            >
+              {/* Official Google Maps logo */}
+              <svg width="17" height="24" viewBox="0 0 17 24" fill="none" aria-hidden>
+                <g clipPath="url(#gmaps-clip)">
+                  <path d="M4.68726 17.7793C5.39206 18.6639 6.03356 19.5957 6.60713 20.5679C7.09681 21.4822 7.30094 22.1023 7.6588 23.204C7.87828 23.8127 8.07663 23.9943 8.50309 23.9943C8.9678 23.9943 9.17864 23.6853 9.34154 23.2073C9.67981 22.1669 9.94524 21.3728 10.364 20.6226C11.1857 19.1741 12.2068 17.8869 13.21 16.6498C13.4816 16.2997 15.2377 14.2599 16.0282 12.6505C16.0282 12.6505 16.9999 10.8826 16.9999 8.41343C16.9999 6.10381 16.0417 4.50195 16.0417 4.50195L13.2828 5.22954L11.6074 9.57511L11.1929 10.1743L11.11 10.2829L10.9998 10.4188L10.8063 10.6358L10.5297 10.9081L9.03779 12.105L5.30776 14.2259L4.68726 17.7793Z" fill="#34A853"/>
+                  <path d="M0.837402 12.3525C1.74777 14.4002 3.50328 16.2002 4.69102 17.7799L10.9997 10.4208C10.9997 10.4208 10.1109 11.5654 8.49869 11.5654C6.70287 11.5654 5.25209 10.1532 5.25209 8.37251C5.25209 7.15139 5.9981 6.3125 5.9981 6.3125L1.71562 7.44253L0.837402 12.3525Z" fill="#FBBC04"/>
+                  <path d="M11.0701 0.378906C13.1654 1.04417 14.9588 2.44081 16.0435 4.5003L11.0016 10.4171C11.0016 10.4171 11.7476 9.56306 11.7476 8.34952C11.7476 6.52735 10.1895 5.16609 8.50633 5.16609C6.91464 5.16609 6.00049 6.30887 6.00049 6.30887V2.58135L11.0701 0.378906Z" fill="#4285F4"/>
+                  <path d="M1.99316 2.99281C3.24459 1.51834 5.44662 0 8.48245 0C9.95534 0 11.065 0.380796 11.065 0.380796L5.9958 6.31167H2.40422L1.99316 2.99281Z" fill="#1A73E8"/>
+                  <path d="M0.837516 12.352C0.837516 12.352 0 10.7369 0 8.39703C0 6.18556 0.872977 4.25248 1.99318 2.99219L5.99868 6.31158L0.837516 12.352Z" fill="#EA4335"/>
+                </g>
+                <defs>
+                  <clipPath id="gmaps-clip">
+                    <rect width="17" height="24" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              Znajdź nas w Google Maps
+            </a>
           </div>
 
           {/* Usługi */}

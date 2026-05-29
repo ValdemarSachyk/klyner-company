@@ -18,10 +18,29 @@ function pushEvent(payload: Record<string, unknown>) {
   window.dataLayer.push(payload);
 }
 
+const SERVICE_OPTIONS = [
+  { value: 'mieszkanie', label: 'Sprzątanie mieszkania / domu' },
+  { value: 'airbnb',     label: 'Sprzątanie Airbnb' },
+  { value: 'biuro',      label: 'Sprzątanie biura' },
+  { value: 'okna',       label: 'Mycie okien' },
+  { value: 'kanapa',     label: 'Pranie kanapy' },
+  { value: 'dywan',      label: 'Pranie dywanu' },
+  { value: 'inne',       label: 'Inne' },
+];
+
 export default function ContactCTA() {
-  const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', services: [] as string[], message: '' });
   const [state, setState] = useState<FormState>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const toggleService = (value: string) => {
+    setForm((f) => ({
+      ...f,
+      services: f.services.includes(value)
+        ? f.services.filter((s) => s !== value)
+        : [...f.services, value],
+    }));
+  };
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -45,7 +64,7 @@ export default function ContactCTA() {
           access_key: '0fe49ee0-dc28-41d3-a7e8-cb10a1169c0a',
           name: form.name,
           phone: form.phone,
-          service: form.service,
+          service: form.services.length > 0 ? form.services.join(', ') : 'Nie wybrano',
           message: form.message,
           subject: `Nowe zapytanie od ${form.name}`,
         }),
@@ -99,7 +118,11 @@ export default function ContactCTA() {
             </p>
 
             <div className="flex flex-col gap-5">
-              <div className="flex items-center gap-4">
+              <a
+                href="tel:+48734947424"
+                className="flex items-center gap-4 rounded-xl p-2 -m-2 transition-opacity duration-200 hover:opacity-80"
+                onClick={() => pushEvent({ event: 'contact_phone' })}
+              >
                 <div
                   className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
                   style={{ background: 'rgba(255,255,255,0.15)' }}
@@ -110,16 +133,16 @@ export default function ContactCTA() {
                   <div className="text-xs font-medium mb-0.5" style={{ color: 'rgba(255,255,255,0.65)' }}>
                     Telefon
                   </div>
-                  <a
-                    href="tel:+48734947424"
-                    className="text-white font-semibold hover:underline"
-                    onClick={() => pushEvent({ event: 'contact_phone' })}
-                  >
-                    +48 734 947 424
-                  </a>
+                  <span className="text-white font-semibold">+48 734 947 424</span>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
+              </a>
+              <a
+                href="https://wa.me/48734947424"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 rounded-xl p-2 -m-2 transition-opacity duration-200 hover:opacity-80"
+                onClick={() => pushEvent({ event: 'contact_whatsapp' })}
+              >
                 <div
                   className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
                   style={{ background: 'rgba(37,211,102,0.25)' }}
@@ -132,18 +155,13 @@ export default function ContactCTA() {
                   <div className="text-xs font-medium mb-0.5" style={{ color: 'rgba(255,255,255,0.65)' }}>
                     WhatsApp
                   </div>
-                  <a
-                    href="https://wa.me/48734947424"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white font-semibold hover:underline"
-                    onClick={() => pushEvent({ event: 'contact_whatsapp' })}
-                  >
-                    +48 734 947 424
-                  </a>
+                  <span className="text-white font-semibold">+48 734 947 424</span>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
+              </a>
+              <a
+                href="mailto:kontakt@klyner.pl"
+                className="flex items-center gap-4 rounded-xl p-2 -m-2 transition-opacity duration-200 hover:opacity-80"
+              >
                 <div
                   className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
                   style={{ background: 'rgba(255,255,255,0.15)' }}
@@ -154,14 +172,9 @@ export default function ContactCTA() {
                   <div className="text-xs font-medium mb-0.5" style={{ color: 'rgba(255,255,255,0.65)' }}>
                     E-mail
                   </div>
-                  <a
-                    href="mailto:kontakt@klyner.pl"
-                    className="text-white font-semibold hover:underline"
-                  >
-                    kontakt@klyner.pl
-                  </a>
+                  <span className="text-white font-semibold">kontakt@klyner.pl</span>
                 </div>
-              </div>
+              </a>
             </div>
           </motion.div>
 
@@ -259,30 +272,31 @@ export default function ContactCTA() {
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium mb-1.5"
+                    <p className="block text-sm font-medium mb-2"
                       style={{ color: 'var(--color-ink)' }}>
-                      Rodzaj usługi
-                    </label>
-                    <select
-                      id="service"
-                      value={form.service}
-                      onChange={(e) => setForm((f) => ({ ...f, service: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-lg text-sm border outline-none transition-all duration-200"
-                      style={{
-                        borderColor: 'var(--color-border)',
-                        color: form.service ? 'var(--color-ink)' : 'var(--color-ink-muted)',
-                        background: 'var(--color-bg)',
-                      }}
-                    >
-                      <option value="" disabled>Wybierz usługę…</option>
-                      <option value="mieszkanie">Sprzątanie mieszkania / domu</option>
-                      <option value="airbnb">Sprzątanie Airbnb</option>
-                      <option value="biuro">Sprzątanie biura</option>
-                      <option value="okna">Mycie okien</option>
-                      <option value="kanapa">Pranie kanapy</option>
-                      <option value="dywan">Pranie dywanu</option>
-                      <option value="inne">Inne</option>
-                    </select>
+                      Rodzaj usługi <span className="text-xs font-normal" style={{ color: 'var(--color-ink-muted)' }}>(możesz wybrać kilka)</span>
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {SERVICE_OPTIONS.map((opt) => {
+                        const selected = form.services.includes(opt.value);
+                        return (
+                          <button
+                            key={opt.value}
+                            type="button"
+                            onClick={() => toggleService(opt.value)}
+                            className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-150"
+                            style={{
+                              borderColor: selected ? 'var(--color-primary)' : 'var(--color-border)',
+                              background: selected ? 'var(--color-primary-light)' : 'var(--color-bg)',
+                              color: selected ? 'var(--color-primary)' : 'var(--color-ink-secondary)',
+                            }}
+                          >
+                            {selected && <span className="mr-1">✓</span>}
+                            {opt.label}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   <div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Phone } from 'lucide-react';
 
 const highlights = [
   'Jelenia Góra, Szklarska Poręba, Karpacz',
@@ -105,7 +105,7 @@ export default function Hero() {
                 <ArrowRight className="w-4 h-4" aria-hidden />
               </a>
               <a
-                href="#uslugi"
+                href="tel:+48734947424"
                 className="flex items-center justify-center gap-2 px-7 h-14 rounded-[10px] text-base font-semibold border-2 transition-all duration-200 hover:scale-105 active:scale-95"
                 style={{
                   color: 'var(--color-primary)',
@@ -113,7 +113,8 @@ export default function Hero() {
                   background: 'transparent',
                 }}
               >
-                Nasze usługi
+                <Phone className="w-4 h-4" aria-hidden />
+                +48 734 947 424
               </a>
             </motion.div>
           </div>
